@@ -1,0 +1,17 @@
+# dsh-plugin-prompt-optimizer bundle patch.
+#
+# One additive host row only. No sidebar entry, no settings page, no
+# model-visible tool:
+#   * the host half registers two same-origin HTTP routes
+#       POST /prompt-optimizer/optimize   rewrite one prompt through ctx.llm
+#       GET  /prompt-optimizer/health     liveness + resolved default model
+#   * the browser half (declared by `dsh.client` in package.json) registers a
+#     single entry into the `conversation.input.dock` slot, which is the
+#     full-width strip directly ABOVE the composer card — this is the
+#     "优化提示词" button the user asked for.
+#
+# `webServer` is a hard dependency in lib/index.js, so a profile without an
+# HTTP server simply does not load this bundle.
+- insert:
+    - id: prompt-optimizer
+      name: 'dsh-plugin-prompt-optimizer'

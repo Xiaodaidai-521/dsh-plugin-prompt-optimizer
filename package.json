@@ -1,0 +1,62 @@
+{
+  "name": "dsh-plugin-prompt-optimizer",
+  "version": "0.3.0",
+  "description": "An icon-only ✨ control inside the DeepSeek Harness composer that rewrites your draft with the model route you already configured — and leaves it untouched when it is already fine. No sidebar entry.",
+  "type": "module",
+  "main": "lib/index.js",
+  "engines": {
+    "node": ">=18",
+    "dsh": ">=0.1.5-rc.1"
+  },
+  "exports": {
+    ".": {
+      "default": "./lib/index.js"
+    },
+    "./client": {
+      "default": "./lib/client.js"
+    },
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib/index.js",
+    "lib/client.js",
+    "lib/store.js",
+    "lib/evaluate.js",
+    "lib/prompt.js",
+    "prompt.md",
+    "cordis.patch.yml",
+    "README.md"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "inject": [
+        "@deepseek-ai/dsh-client-runtime"
+      ],
+      "platform": "web",
+      "immediately": true
+    }
+  },
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "deepseek-harness",
+    "cordis",
+    "prompt",
+    "prompt-optimizer",
+    "composer"
+  ],
+  "license": "MIT",
+  "peerDependencies": {
+    "@deepseek-ai/cordis": "^4.0.1",
+    "@deepseek-ai/dsh-client-runtime": ">=0.1.5-rc.1"
+  },
+  "peerDependenciesMeta": {
+    "@deepseek-ai/dsh-client-runtime": {
+      "optional": true
+    }
+  }
+}
